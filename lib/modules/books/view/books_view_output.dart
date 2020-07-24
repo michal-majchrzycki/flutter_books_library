@@ -1,11 +1,23 @@
+import 'package:flutter/cupertino.dart';
+
 import '../presenter/books_presenter.dart';
 
 class BooksViewOutput {
 
-  viewIsReady() async {
+  loadData() {
 
-    return await BooksPresenter().viewIsReady();
+    BooksPresenter().loadData();
+  }
 
+  getBooks() async {
+
+    return await BooksPresenter().getBooks();
+
+  }
+
+  loadMoreData() {
+
+    BooksPresenter().loadMoreData();
   }
 
   booksViewTitle() {
@@ -14,9 +26,10 @@ class BooksViewOutput {
 
   }
 
-  getBooks() {
+  didSelectBookAt(int index, BuildContext context) {
 
-    return BooksPresenter().getBooks();
+    BooksPresenter().didSelectBookAt(index, context);
+
   }
 
 }

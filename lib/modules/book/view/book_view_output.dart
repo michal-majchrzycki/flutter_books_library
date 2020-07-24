@@ -2,33 +2,68 @@ import '../presenter/book_presenter.dart';
 
 class BookViewOutput {
 
-  bookTitle() {
+  bookTitle() async {
 
-    return BookPresenter().bookTitle();
+    return await BookPresenter().bookTitle();
   }
 
-  bookAuthor() {
+  noBookTitle() {
 
-    return BookPresenter().bookAuthor();
+    return BookPresenter().noBookTitle();
   }
 
-  bookDescription() {
+  bookAuthor() async {
 
-    return BookPresenter().bookDescription();
+    return await BookPresenter().bookAuthor();
   }
 
-  bookYear() {
-    return BookPresenter().bookYear();
+  noBookAuthor() {
+
+    return BookPresenter().noBookAuthor();
   }
 
-  bookPublisher() {
+  bookDescription() async {
 
-    return BookPresenter().bookPublisher();
+    return await BookPresenter().bookDescription();
   }
 
-  bookLanguage() {
+  noBookDescription() {
 
-    return BookPresenter().bookLanguage();
+    return BookPresenter().noBookDescription();
+  }
+
+  bookYear() async {
+    return await BookPresenter().bookYear();
+  }
+
+  noBookYear() {
+
+    return BookPresenter().noBookYear();
+  }
+
+  bookPublisher() async {
+
+    return await BookPresenter().bookPublisher();
+  }
+
+  noBookPublisher() {
+
+    return BookPresenter().noBookPublisher();
+  }
+
+  bookLanguage() async {
+
+    return await BookPresenter().bookLanguage();
+  }
+
+  noBookLanguage() {
+
+    return BookPresenter().noBookLanguage();
+  }
+
+  bookImage() async {
+
+    return await BookPresenter().bookImage();
   }
 
 }

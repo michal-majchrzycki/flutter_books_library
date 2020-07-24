@@ -2,9 +2,9 @@ import 'books_interactor.dart';
 
 class BooksInteractorInput {
 
-  getBooks() async {
+  getBooks(int page) async {
 
-    return await BooksInteractor().getBooks();
+    return await BooksInteractor().getBooks(page);
   }
 
 }

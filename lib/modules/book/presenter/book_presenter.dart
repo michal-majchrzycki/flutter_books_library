@@ -1,34 +1,81 @@
+import '../../../model/objects/book_object.dart';
 import '../view/book_view_output.dart';
+import 'book_presenter_input.dart';
 
-class BookPresenter implements BookViewOutput {
+class BookPresenter implements BookViewOutput, BookPresenterInput {
 
-  bookTitle() {
+  static BookObject selectedBook;
 
-    return 'Some Book Title';
+  setBook(BookObject book) async {
+
+    selectedBook = book;
+
   }
 
-  bookAuthor() {
+  bookTitle() async {
 
-    return 'Some Book Author';
+    return await selectedBook.title;
   }
 
-  bookDescription() {
-    return 'TMaire Brennan mieszka w Dublinie, w Irlandii. Często podróżuje angażując się w działalność organizacji charytatywnych. Jest ambasadorem ';
+  bookAuthor() async {
+
+    return await selectedBook.author;
   }
 
-  bookYear() {
-
-    return 'Year: 1990';
+  bookDescription() async {
+    return await selectedBook.description;
   }
 
-  bookPublisher() {
+  bookYear() async {
 
-    return 'Publisher: Penguin Books';
+    return await selectedBook.year;
   }
 
-  bookLanguage() {
+  bookPublisher() async {
 
-    return 'Language: English';
+    return await selectedBook.publisher;
+  }
+
+  bookLanguage() async {
+
+    return await selectedBook.language;
+  }
+
+  bookImage() async {
+
+    return await selectedBook.cover;
+  }
+
+  // MARK: No data placeholders:
+
+  noBookTitle() {
+
+    return 'No title';
+  }
+
+  noBookAuthor() {
+
+    return 'No author';
+  }
+
+  noBookYear() {
+
+    return 'No year';
+  }
+
+  noBookPublisher() {
+
+    return 'No publisher';
+  }
+
+  noBookLanguage() {
+
+    return 'No language';
+  }
+
+  noBookDescription() {
+
+    return 'No description';
   }
 
 }

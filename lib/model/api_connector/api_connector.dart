@@ -6,9 +6,9 @@ import 'package:http/http.dart' as http;
 
 class ApiConnector {
 
-  var url = ApiUrl().flutterUrl;
+  Future<List> getBooks(int page) async {
 
-  Future<List> getBooks() async {
+    var url = ApiUrl().flutterUrl + '?page=$page';
 
     final jsonResponse = await http.get(url);
 

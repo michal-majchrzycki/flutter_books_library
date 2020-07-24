@@ -1,40 +1,64 @@
 import 'package:ebook_reader/model/objects/book_object.dart';
+import 'package:ebook_reader/modules/book/presenter/book_presenter_input.dart';
+import 'package:ebook_reader/modules/books/router/books_router_input.dart';
+import 'package:flutter/cupertino.dart';
 import '../view/books_view_output.dart';
 import '../interactor/books_interactor_input.dart';
 
-class BooksPresenter implements BooksViewOutput {
+class BooksPresenter with BooksViewOutput {
 
   var interactor = BooksInteractorInput();
 
-  List<BookObject> booksArray = [];
+  var router = BooksRouterInput();
 
-  viewIsReady() async {
+  static List<BookObject> booksArray = [];
 
-    return await interactor.getBooks();
+  static int paginator = 1;
+
+  static bool isLoading = false;
+
+  loadData() async {
+
+    booksArray.addAll(await interactor.getBooks(paginator));// = await interactor.getBooks(paginator);
+
+    isLoading = false;
 
   }
 
-  Future<List> refreshBooks() async {
-
-    booksArray = await interactor.getBooks();
-
-  }
-
-  getBooks() {
+  getBooks() async {
 
     return booksArray;
 
   }
+
+  loadMoreData() {
+
+    if (isLoading == false) {
+
+      isLoading = true;
+
+      paginator += 1;
+
+      loadData();
+
+
+    }
+
+
+  }
+
 
   booksViewTitle() {
 
     return 'Flutter eBooks';
   }
 
-  books() {
+  didSelectBookAt(int index, BuildContext context) async {
+
+    var book = booksArray[index];
+
+    router.openDetails(book, context);
 
   }
-
-
 
 }
